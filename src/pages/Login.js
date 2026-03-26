@@ -8,6 +8,7 @@ const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [loadingMsg, setLoadingMsg] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -17,6 +18,16 @@ const Login = () => {
     e.preventDefault();
     setError('');
     setLoading(true);
+    setLoadingMsg('Connecting to server...');
+
+    const msgTimer = setTimeout(() => {
+      setLoadingMsg('Server is waking up, please wait...');
+    }, 3000);
+
+    const msgTimer2 = setTimeout(() => {
+      setLoadingMsg('Almost there...');
+    }, 8000);
+
     try {
       const { data } = await API.post('/auth/login', form);
       login(data.user, data.token);
@@ -24,7 +35,10 @@ const Login = () => {
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid email or password');
     } finally {
+      clearTimeout(msgTimer);
+      clearTimeout(msgTimer2);
       setLoading(false);
+      setLoadingMsg('');
     }
   };
 
@@ -53,7 +67,7 @@ const Login = () => {
             <input name="password" type="password" placeholder="Your password" value={form.password} onChange={handleChange} required />
           </div>
           <button type="submit" className="btn-gold auth-btn" disabled={loading}>
-            {loading ? 'Signing In...' : 'Sign In →'}
+            {loading ? loadingMsg || 'Signing In...' : 'Sign In →'}
           </button>
         </form>
 
