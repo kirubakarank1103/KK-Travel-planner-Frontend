@@ -1,0 +1,114 @@
+.trip-detail-page { min-height: 100vh; }
+
+.detail-hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.detail-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+}
+
+.detail-hero-content {
+  position: absolute;
+  bottom: 40px;
+  left: 5%;
+}
+
+.detail-hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin: 12px 0 8px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.detail-hero-content p {
+  color: rgba(245, 245, 240, 0.8);
+  font-size: 1rem;
+}
+
+.detail-body { padding-top: 40px; }
+
+.detail-info-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.detail-info-card {
+  text-align: center;
+  padding: 22px 14px;
+}
+
+.info-icon { font-size: 1.8rem; margin-bottom: 10px; }
+
+.info-label {
+  color: var(--gray);
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.info-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.detail-desc {
+  margin-bottom: 30px;
+}
+
+.detail-desc h3 { font-size: 1.2rem; }
+.detail-desc p {
+  color: rgba(245, 245, 240, 0.75);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-delete-full {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(224, 85, 85, 0.3);
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-delete-full:hover {
+  background: rgba(224, 85, 85, 0.15);
+  border-color: var(--danger);
+}
+
+@media (max-width: 1024px) {
+  .detail-info-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .detail-hero { height: 280px; }
+  .detail-info-grid { grid-template-columns: repeat(2, 1fr); }
+  .detail-hero-content h1 { font-size: 1.8rem; }
+}
