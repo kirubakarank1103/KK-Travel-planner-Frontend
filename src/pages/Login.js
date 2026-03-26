@@ -31,7 +31,7 @@ const Login = () => {
     try {
       const { data } = await API.post('/auth/login', form);
       login(data.user, data.token);
-      navigate('/dashboard');
+      navigate('/home');
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid email or password');
     } finally {
